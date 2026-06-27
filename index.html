@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Radley:ital@0;1&display=swap" rel="stylesheet">
 <title>Ghim Chong Tan — Product</title>
 <style>
   :root{
@@ -12,141 +15,318 @@
     --accent:#3a5a78;
     --accent-soft:#cfe0ea;
     --muted:#6b6b66;
+    --line-height-normal:1.6;
+    --line-height-large:1.9;
+    --header-height:100vh;
+    --header-align-items:flex-start;
+    --header-padding-top:100px;
+    --header-padding-horizontal:24px;
+    --header-padding-bottom:10px;
+    --header-max-width:900px;
+    --header-gap:120px;
+    --eyebrow-margin:12px;
+    --heading-margin:24px;
+    --lede-margin:16px;
+    --scroll-margin:20px;
+    --scroll-label-font-size:20px;
+    --gallery-card-width:320px;
+    --gallery-gap:28px;
+    --gallery-visible:4;
+    --gallery-card-height:500px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family: 'Iowan Old Style','Palatino Linotype',Georgia,serif;
-    line-height:1.6;
+    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height:var(--line-height-normal);
   }
-  .mono{font-family: 'SF Mono','Consolas',monospace; letter-spacing:0.02em;}
+  .mono{font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing:0.02em;}
+
+  nav{
+    position:sticky;top:0;z-index:999;
+    max-width:100%;margin:0 auto;padding:20px 24px;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  nav a.logo{
+    font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;
+    letter-spacing:0.02em;
+  }
+  nav a.logo:hover{
+    color:var(--accent);
+  }
+  nav a.nav-item{
+    font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
+  }
+  nav a.nav-item:hover{
+    color:var(--accent);
+  }
+
+  nav .links{
+    display:flex;gap:24px;
+  }
+  nav .links a{
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
+    font-size:15px;
+  }
+  nav .links a:hover{color:var(--accent);}
 
   header{
-    max-width:880px;margin:0 auto;padding:80px 24px 40px;
+    height:var(--header-height);max-width:100%;margin:0 auto;padding:var(--header-padding-top) var(--header-padding-horizontal) var(--header-padding-bottom);
     border-bottom:1px solid var(--line);
+    display:flex;align-items:var(--header-align-items);justify-content:center;
+    overflow:hidden;
+  }
+  .header-content{
+    display:flex;flex-direction:column;gap:var(--header-gap);
+    align-items:center;justify-content:center;
+    width:100%;max-width:var(--header-max-width);
+    text-align:center;
+  }
+  .header-text{
+    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
   }
   .eyebrow{
     font-size:13px;color:var(--accent);text-transform:uppercase;
-    letter-spacing:0.12em;margin-bottom:18px;
+    letter-spacing:0.12em;margin-bottom:var(--eyebrow-margin);line-height:1.4;
   }
-  h1{font-size:42px;font-weight:600;line-height:1.15;margin-bottom:18px;}
-  .lede{font-size:18px;color:var(--muted);max-width:540px;margin-bottom:28px;}
-  .links a{
-    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
-    margin-right:24px;font-size:15px;
+  h1{font-family:'Radley',serif;font-size:72px;font-weight:400;line-height:1.2;margin-bottom:var(--heading-margin);letter-spacing:0;}
+  h1 .intro{font-style:italic;display:inline;}
+  h1 .name{font-style:normal;display:inline;}
+  .lede{font-size:16px;color:var(--muted);line-height:1.6;margin-bottom:var(--lede-margin);}
+  .lede + .lede{margin-top:calc(var(--lede-margin) * 0.75);}
+  .scroll-label{
+    font-size:var(--scroll-label-font-size);color:var(--ink);text-transform:none;
+    letter-spacing:0;margin-bottom:12px;font-weight:400;line-height:1.4;
   }
-  .links a:hover{color:var(--accent);}
+  .scroll-btn{
+    width:56px;height:56px;border-radius:50%;
+    background:transparent;color:var(--accent);
+    border:2px solid var(--accent);cursor:pointer;font-size:24px;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;transition:all 0.3s ease;
+    align-self:center;margin:0 auto;
+  }
+  .scroll-btn:hover{
+    transform:translateY(4px);
+    background:var(--accent-soft);
+  }
 
-  section{max-width:880px;margin:0 auto;padding:64px 24px;}
+  section{max-width:100%;margin:0 auto;padding:64px 24px;}
   section + section{border-top:1px solid var(--line);}
 
   .section-label{
-    font-size:13px;color:var(--muted);text-transform:uppercase;
-    letter-spacing:0.12em;margin-bottom:32px;
+    font-size:64px;color:var(--ink);text-transform:none;
+    letter-spacing:0;margin-bottom:32px;font-weight:400;
+    padding-left:60px;
   }
 
-  .case{
-    display:grid;grid-template-columns:140px 1fr;gap:32px;
-    padding:36px 0;border-top:1px solid var(--line);
-  }
-  .case:first-of-type{border-top:none;}
-  .case-tag{font-size:13px;color:var(--accent);padding-top:4px;}
-  .case h3{font-size:24px;margin-bottom:10px;}
-  .case .role{font-size:14px;color:var(--muted);margin-bottom:14px;}
-  .case p{font-size:16px;color:#3a3a38;margin-bottom:14px;max-width:580px;}
-  .case .meta{
-    display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;
-  }
-  .pill{
-    font-size:12px;border:1px solid var(--line);padding:4px 10px;
-    border-radius:100px;color:var(--muted);
-  }
-  .case a.cta{
-    display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);
-    text-decoration:none;border-bottom:1px solid var(--accent-soft);
+  /* Make the Selected Work section fill one viewport */
+  section#work{
+    height:100vh;
+    padding:48px var(--header-padding-horizontal);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
   }
 
-  footer{
-    max-width:880px;margin:0 auto;padding:48px 24px 80px;
-    color:var(--muted);font-size:14px;
+  .gallery{
+    display:flex;gap:var(--gallery-gap);overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    padding-bottom:12px;
+    margin:0 auto;
+    padding-left:0;
+    padding-right:0;
+    -webkit-overflow-scrolling:touch;
+    width: calc(var(--gallery-card-width) * var(--gallery-visible) + var(--gallery-gap) * (var(--gallery-visible) - 1));
+    max-width:100%;
   }
 
+  .card{
+    flex:0 0 var(--gallery-card-width);
+    scroll-snap-align:start;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    height:var(--gallery-card-height);
+    position:relative;
+  }
+  .card-image{
+    width:100%;
+    height:100%;
+    background:#e8e5dd;
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .card-image img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .card-content{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    padding:60px 16px 20px;
+    background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    display:flex;flex-direction:column;
+    align-items:center;text-align:center;
+    z-index:1;
+  }
+  .card h3{font-size:18px;font-weight:600;margin-bottom:6px;color:#fff;}
+  .card .role{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.4;}
+
+
+  @media (max-width:768px){
+    h1{font-size:48px;}
+    .header-content{
+      gap:32px;
+    }
+    .header-photo{
+      max-width:300px;
+    }
+  }
   @media (max-width:600px){
-    .case{grid-template-columns:1fr;}
-    h1{font-size:32px;}
+    h1{font-size:40px;}
+    .lede{font-size:14px;}
+    .header-content{
+      gap:24px;
+    }
+    .header-photo{
+      max-width:240px;
+    }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="eyebrow mono">Product · IT · Systems</div>
-  <h1>Ghim Chong Tan</h1>
-  <p class="lede">Aspiring Product Manager with a background in IT and business. I work at the intersection of fintech systems, AI products, and data-driven decisions — currently completing a Master of IT in Business, interning at a fintech orchestration platform.</p>
+<nav>
+  <a href="#" class="logo">Ghim Chong Tan</a>
   <div class="links">
-    <a href="mailto:youremail@example.com">Email</a>
-    <a href="#" target="_blank">LinkedIn</a>
-    <a href="#" target="_blank">GitHub</a>
-    <a href="#" target="_blank">Resume</a>
+    <a href="mailto:ghimchong.tan@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="/resume.html">Resume</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-content">
+    <div class="header-text">
+      <div class="eyebrow mono">Product · IT · Systems</div>
+      <h1><span class="intro">Hello,</span><span class="name">I am Ghim!</span></h1>
+      <p class="lede">I started in architecture. Two years client-facing, co-leading projects, and turning complex requirements into solutions people could actually use. That thinking did not change when I switched industries. Only the medium did.</p>
+      <p class="lede">Today, I am a Product Associate at EFGH, working at the intersection of fintech, systems integration, and product strategy. I work directly with the CTO, COO, and Product Head. </p>
+      <p class="lede">Alongside this, I am completing a Master of IT in Business at SMU. Different industry. Same instinct: build things that work, for people who need them.</p>
+      
+      <div style="margin-top:var(--scroll-margin);">
+        <div class="scroll-label">View my work</div>
+        <a href="#work" class="scroll-btn">↓</a>
+      </div>
+    </div>
   </div>
 </header>
 
 <section id="work">
   <div class="section-label mono">Selected Work</div>
 
-  <div class="case">
-    <div class="case-tag mono">01 — Product</div>
-    <div>
-      <h3>MITB AI Journi</h3>
-      <div class="role">Led research, strategy, roadmap, and analytics planning</div>
-      <p>An information-driven career planning tool helping AI-track students map target roles to skills, modules, and gaps. Built from user research (surveys + interviews) through to a live, working prototype.</p>
-      <div class="meta">
-        <span class="pill">User Research</span>
-        <span class="pill">Product Strategy</span>
-        <span class="pill">Roadmapping</span>
-        <span class="pill">Analytics</span>
+  <div class="gallery" aria-label="Selected works" tabindex="0">
+    <div class="card">
+      <div class="card-image">
+        <img src="First Card - Journi.jpg" alt="MITB AI Journi">
       </div>
-      <a class="cta" href="https://mitb-journi.lovable.app" target="_blank">View live app →</a>
+      <div class="card-content">
+        <h3>MITB AI Journi</h3>
+        <div class="role">A career-to-curriculum planner for MITB students, from research to a working app.</div>
+      </div>
     </div>
-  </div>
 
-  <div class="case">
-    <div class="case-tag mono">02 — Delivery</div>
-    <div>
-      <h3>CaseHub</h3>
-      <div class="role">Agile delivery, backlog, and system architecture</div>
-      <p>A secure student support case management platform, built across four sprints with full Agile + DevSecOps practices — from user stories and acceptance criteria to CI/CD, RBAC, and audit logging.</p>
-      <div class="meta">
-        <span class="pill">Agile / Scrum</span>
-        <span class="pill">Backlog Management</span>
-        <span class="pill">System Architecture</span>
-        <span class="pill">DevSecOps</span>
+    <div class="card">
+      <div class="card-image">
+        <img src="Second Card - CaseHub.jpg" alt="CaseHub">
       </div>
-      <a class="cta" href="#" target="_blank">View case study →</a>
+      <div class="card-content">
+        <h3>CaseHub</h3>
+        <div class="role">CaseHub gave counsellors one secure place to triage, track, and act</div>
+      </div>
     </div>
-  </div>
 
-  <div class="case">
-    <div class="case-tag mono">03 — Strategy</div>
-    <div>
-      <h3>Tap &amp; Sip</h3>
-      <div class="role">Market analysis, financial modelling, simulation</div>
-      <p>A data-driven decision tool evaluating where to launch a bubble tea outlet in Singapore — modelling demand, cost structure, pricing tradeoffs, and ROI across five MRT locations via Monte Carlo simulation.</p>
-      <div class="meta">
-        <span class="pill">Market Sizing</span>
-        <span class="pill">Financial Modelling</span>
-        <span class="pill">Simulation</span>
+    <div class="card">
+      <div class="card-image">
+        <img src="Third Card - Brew.jpg" alt="Where to Brew">
       </div>
-      <a class="cta" href="#" target="_blank">View case study →</a>
+      <div class="card-content">
+        <h3>Where to Brew</h3>
+        <div class="role">A data-driven decision tool, modelling demand, cost, and ROI across five locations</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        [image]
+      </div>
+      <div class="card-content">
+        <h3>Placeholder Title 4</h3>
+        <div class="role">Short subtitle or role</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        [image]
+      </div>
+      <div class="card-content">
+        <h3>Placeholder Title 5</h3>
+        <div class="role">Short subtitle or role</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        [image]
+      </div>
+      <div class="card-content">
+        <h3>Placeholder Title 6</h3>
+        <div class="role">Short subtitle or role</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        [image]
+      </div>
+      <div class="card-content">
+        <h3>Placeholder Title 7</h3>
+        <div class="role">Short subtitle or role</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        [image]
+      </div>
+      <div class="card-content">
+        <h3>Placeholder Title 8</h3>
+        <div class="role">Short subtitle or role</div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  © 2026 Ghim Chong Tan — Built with intent, not a template.
-</footer>
+<script>
+  (function(){
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) return;
+    gallery.addEventListener('wheel', function(e){
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+        e.preventDefault();
+        gallery.scrollLeft += e.deltaY;
+      }
+    }, {passive:false});
+  })();
+</script>
+
 
 </body>
 </html>

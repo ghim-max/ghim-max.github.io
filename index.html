@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghim Chong Tan — Product</title>
+<style>
+  :root{
+    --ink:#1b1b1d;
+    --paper:#fbfaf7;
+    --line:#e3e0d8;
+    --accent:#3a5a78;
+    --accent-soft:#cfe0ea;
+    --muted:#6b6b66;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: 'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    line-height:1.6;
+  }
+  .mono{font-family: 'SF Mono','Consolas',monospace; letter-spacing:0.02em;}
+
+  header{
+    max-width:880px;margin:0 auto;padding:80px 24px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;color:var(--accent);text-transform:uppercase;
+    letter-spacing:0.12em;margin-bottom:18px;
+  }
+  h1{font-size:42px;font-weight:600;line-height:1.15;margin-bottom:18px;}
+  .lede{font-size:18px;color:var(--muted);max-width:540px;margin-bottom:28px;}
+  .links a{
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
+    margin-right:24px;font-size:15px;
+  }
+  .links a:hover{color:var(--accent);}
+
+  section{max-width:880px;margin:0 auto;padding:64px 24px;}
+  section + section{border-top:1px solid var(--line);}
+
+  .section-label{
+    font-size:13px;color:var(--muted);text-transform:uppercase;
+    letter-spacing:0.12em;margin-bottom:32px;
+  }
+
+  .case{
+    display:grid;grid-template-columns:140px 1fr;gap:32px;
+    padding:36px 0;border-top:1px solid var(--line);
+  }
+  .case:first-of-type{border-top:none;}
+  .case-tag{font-size:13px;color:var(--accent);padding-top:4px;}
+  .case h3{font-size:24px;margin-bottom:10px;}
+  .case .role{font-size:14px;color:var(--muted);margin-bottom:14px;}
+  .case p{font-size:16px;color:#3a3a38;margin-bottom:14px;max-width:580px;}
+  .case .meta{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;
+  }
+  .pill{
+    font-size:12px;border:1px solid var(--line);padding:4px 10px;
+    border-radius:100px;color:var(--muted);
+  }
+  .case a.cta{
+    display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);
+    text-decoration:none;border-bottom:1px solid var(--accent-soft);
+  }
+
+  footer{
+    max-width:880px;margin:0 auto;padding:48px 24px 80px;
+    color:var(--muted);font-size:14px;
+  }
+
+  @media (max-width:600px){
+    .case{grid-template-columns:1fr;}
+    h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow mono">Product · IT · Systems</div>
+  <h1>Ghim Chong Tan</h1>
+  <p class="lede">Aspiring Product Manager with a background in IT and business. I work at the intersection of fintech systems, AI products, and data-driven decisions — currently completing a Master of IT in Business, interning at a fintech orchestration platform.</p>
+  <div class="links">
+    <a href="mailto:youremail@example.com">Email</a>
+    <a href="#" target="_blank">LinkedIn</a>
+    <a href="#" target="_blank">GitHub</a>
+    <a href="#" target="_blank">Resume</a>
+  </div>
+</header>
+
+<section id="work">
+  <div class="section-label mono">Selected Work</div>
+
+  <div class="case">
+    <div class="case-tag mono">01 — Product</div>
+    <div>
+      <h3>MITB AI Journi</h3>
+      <div class="role">Led research, strategy, roadmap, and analytics planning</div>
+      <p>An information-driven career planning tool helping AI-track students map target roles to skills, modules, and gaps. Built from user research (surveys + interviews) through to a live, working prototype.</p>
+      <div class="meta">
+        <span class="pill">User Research</span>
+        <span class="pill">Product Strategy</span>
+        <span class="pill">Roadmapping</span>
+        <span class="pill">Analytics</span>
+      </div>
+      <a class="cta" href="https://mitb-journi.lovable.app" target="_blank">View live app →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-tag mono">02 — Delivery</div>
+    <div>
+      <h3>CaseHub</h3>
+      <div class="role">Agile delivery, backlog, and system architecture</div>
+      <p>A secure student support case management platform, built across four sprints with full Agile + DevSecOps practices — from user stories and acceptance criteria to CI/CD, RBAC, and audit logging.</p>
+      <div class="meta">
+        <span class="pill">Agile / Scrum</span>
+        <span class="pill">Backlog Management</span>
+        <span class="pill">System Architecture</span>
+        <span class="pill">DevSecOps</span>
+      </div>
+      <a class="cta" href="#" target="_blank">View case study →</a>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-tag mono">03 — Strategy</div>
+    <div>
+      <h3>Tap &amp; Sip</h3>
+      <div class="role">Market analysis, financial modelling, simulation</div>
+      <p>A data-driven decision tool evaluating where to launch a bubble tea outlet in Singapore — modelling demand, cost structure, pricing tradeoffs, and ROI across five MRT locations via Monte Carlo simulation.</p>
+      <div class="meta">
+        <span class="pill">Market Sizing</span>
+        <span class="pill">Financial Modelling</span>
+        <span class="pill">Simulation</span>
+      </div>
+      <a class="cta" href="#" target="_blank">View case study →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Ghim Chong Tan — Built with intent, not a template.
+</footer>
+
+</body>
+</html>

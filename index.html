@@ -1,332 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Radley:ital@0;1&display=swap" rel="stylesheet">
-<title>Ghim Chong Tan — Product</title>
-<style>
-  :root{
-    --ink:#1b1b1d;
-    --paper:#fbfaf7;
-    --line:#e3e0d8;
-    --accent:#3a5a78;
-    --accent-soft:#cfe0ea;
-    --muted:#6b6b66;
-    --line-height-normal:1.6;
-    --line-height-large:1.9;
-    --header-height:100vh;
-    --header-align-items:flex-start;
-    --header-padding-top:100px;
-    --header-padding-horizontal:24px;
-    --header-padding-bottom:10px;
-    --header-max-width:900px;
-    --header-gap:120px;
-    --eyebrow-margin:12px;
-    --heading-margin:24px;
-    --lede-margin:16px;
-    --scroll-margin:20px;
-    --scroll-label-font-size:20px;
-    --gallery-card-width:320px;
-    --gallery-gap:28px;
-    --gallery-visible:4;
-    --gallery-card-height:500px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height:var(--line-height-normal);
-  }
-  .mono{font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing:0.02em;}
-
-  nav{
-    position:sticky;top:0;z-index:999;
-    max-width:100%;margin:0 auto;padding:20px 24px;
-    background:var(--paper);
-    border-bottom:1px solid var(--line);
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  nav a.logo{
-    font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;
-    letter-spacing:0.02em;
-  }
-  nav a.logo:hover{
-    color:var(--accent);
-  }
-  nav a.nav-item{
-    font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
-  }
-  nav a.nav-item:hover{
-    color:var(--accent);
-  }
-
-  nav .links{
-    display:flex;gap:24px;
-  }
-  nav .links a{
-    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
-    font-size:15px;
-  }
-  nav .links a:hover{color:var(--accent);}
-
-  header{
-    height:var(--header-height);max-width:100%;margin:0 auto;padding:var(--header-padding-top) var(--header-padding-horizontal) var(--header-padding-bottom);
-    border-bottom:1px solid var(--line);
-    display:flex;align-items:var(--header-align-items);justify-content:center;
-    overflow:hidden;
-  }
-  .header-content{
-    display:flex;flex-direction:column;gap:var(--header-gap);
-    align-items:center;justify-content:center;
-    width:100%;max-width:var(--header-max-width);
-    text-align:center;
-  }
-  .header-text{
-    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  }
-  .eyebrow{
-    font-size:13px;color:var(--accent);text-transform:uppercase;
-    letter-spacing:0.12em;margin-bottom:var(--eyebrow-margin);line-height:1.4;
-  }
-  h1{font-family:'Radley',serif;font-size:72px;font-weight:400;line-height:1.2;margin-bottom:var(--heading-margin);letter-spacing:0;}
-  h1 .intro{font-style:italic;display:inline;}
-  h1 .name{font-style:normal;display:inline;}
-  .lede{font-size:16px;color:var(--muted);line-height:1.6;margin-bottom:var(--lede-margin);}
-  .lede + .lede{margin-top:calc(var(--lede-margin) * 0.75);}
-  .scroll-label{
-    font-size:var(--scroll-label-font-size);color:var(--ink);text-transform:none;
-    letter-spacing:0;margin-bottom:12px;font-weight:400;line-height:1.4;
-  }
-  .scroll-btn{
-    width:56px;height:56px;border-radius:50%;
-    background:transparent;color:var(--accent);
-    border:2px solid var(--accent);cursor:pointer;font-size:24px;
-    display:flex;align-items:center;justify-content:center;
-    text-decoration:none;transition:all 0.3s ease;
-    align-self:center;margin:0 auto;
-  }
-  .scroll-btn:hover{
-    transform:translateY(4px);
-    background:var(--accent-soft);
-  }
-
-  section{max-width:100%;margin:0 auto;padding:64px 24px;}
-  section + section{border-top:1px solid var(--line);}
-
-  .section-label{
-    font-size:64px;color:var(--ink);text-transform:none;
-    letter-spacing:0;margin-bottom:32px;font-weight:400;
-    padding-left:60px;
-  }
-
-  /* Make the Selected Work section fill one viewport */
-  section#work{
-    height:100vh;
-    padding:48px var(--header-padding-horizontal);
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-  }
-
-  .gallery{
-    display:flex;gap:var(--gallery-gap);overflow-x:auto;overflow-y:hidden;
-    scroll-snap-type:x mandatory;
-    padding-bottom:12px;
-    margin:0 auto;
-    padding-left:0;
-    padding-right:0;
-    -webkit-overflow-scrolling:touch;
-    width: calc(var(--gallery-card-width) * var(--gallery-visible) + var(--gallery-gap) * (var(--gallery-visible) - 1));
-    max-width:100%;
-  }
-
-  .card{
-    flex:0 0 var(--gallery-card-width);
-    scroll-snap-align:start;
-    border-radius:30px;
-    overflow:hidden;
-    border:1px solid var(--line);
-    height:var(--gallery-card-height);
-    position:relative;
-  }
-  .card-image{
-    width:100%;
-    height:100%;
-    background:#e8e5dd;
-    position:absolute;
-    inset:0;
-    z-index:0;
-  }
-  .card-image img{
-    width:100%;height:100%;object-fit:cover;display:block;
-  }
-  .card-content{
-    position:absolute;
-    bottom:0;left:0;right:0;
-    padding:60px 16px 20px;
-    background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-    display:flex;flex-direction:column;
-    align-items:center;text-align:center;
-    z-index:1;
-  }
-  .card h3{font-size:18px;font-weight:600;margin-bottom:6px;color:#fff;}
-  .card .role{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.4;}
-
-
-  @media (max-width:768px){
-    h1{font-size:48px;}
-    .header-content{
-      gap:32px;
-    }
-    .header-photo{
-      max-width:300px;
-    }
-  }
-  @media (max-width:600px){
-    h1{font-size:40px;}
-    .lede{font-size:14px;}
-    .header-content{
-      gap:24px;
-    }
-    .header-photo{
-      max-width:240px;
-    }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghim Chong Tan — Product Associate</title>
+  <meta name="description" content="Portfolio of Ghim Chong Tan, Product Associate at Embed Financial. Architecture background. Products built for communities across Zambia, Nigeria, the DRC, and Ghana.">
+  <meta property="og:title" content="Ghim Chong Tan — Product Associate">
+  <meta property="og:description" content="Architecture background. Fintech products for communities that couldn't access them before.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">Ghim Chong Tan</a>
-  <div class="links">
-    <a href="mailto:ghimchong.tan@gmail.com">Email</a>
-    <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
-    <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
-    <a href="/resume.html">Resume</a>
-  </div>
-</nav>
+  <a href="#work" class="skip-link">Skip to work</a>
 
-<header>
-  <div class="header-content">
-    <div class="header-text">
-      <div class="eyebrow mono">Product · IT · Systems</div>
-      <h1><span class="intro">Hello,</span><span class="name">I am Ghim!</span></h1>
-      <p class="lede">I started in architecture. Two years client-facing, co-leading projects, and turning complex requirements into solutions people could actually use. That thinking did not change when I switched industries. Only the medium did.</p>
-      <p class="lede">Today, I am a Product Associate at EFGH, working at the intersection of fintech, systems integration, and product strategy. I work directly with the CTO, COO, and Product Head. </p>
-      <p class="lede">Alongside this, I am completing a Master of IT in Business at SMU. Different industry. Same instinct: build things that work, for people who need them.</p>
-      
-      <div style="margin-top:var(--scroll-margin);">
-        <div class="scroll-label">View my work</div>
-        <a href="#work" class="scroll-btn">↓</a>
-      </div>
+  <nav class="site-nav" id="site-nav">
+    <a href="/" class="nav-logo">GCT</a>
+    <div class="nav-links">
+      <a href="mailto:ghimchong.tan@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/resume.html" class="nav-cta">Resume</a>
     </div>
-  </div>
-</header>
-
-<section id="work">
-  <div class="section-label mono">Selected Work</div>
-
-  <div class="gallery" aria-label="Selected works" tabindex="0">
-    <div class="card">
-      <div class="card-image">
-        <img src="First Card - Journi.jpg" alt="MITB AI Journi">
-      </div>
-      <div class="card-content">
-        <h3>MITB AI Journi</h3>
-        <div class="role">A career-to-curriculum planner for MITB students, from research to a working app.</div>
-      </div>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+      <a href="mailto:ghimchong.tan@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/resume.html" class="nav-cta-mobile">Resume →</a>
     </div>
+  </nav>
 
-    <div class="card">
-      <div class="card-image">
-        <img src="Second Card - CaseHub.jpg" alt="CaseHub">
-      </div>
-      <div class="card-content">
-        <h3>CaseHub</h3>
-        <div class="role">CaseHub gave counsellors one secure place to triage, track, and act</div>
-      </div>
-    </div>
+  <main>
 
-    <div class="card">
-      <div class="card-image">
-        <img src="Third Card - Brew.jpg" alt="Where to Brew">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-text">
+        <h1 id="hero-heading" class="hero-heading">Product, via architecture.</h1>
+        <div class="hero-body">
+          <p class="lede">I started in architecture. Two years client-facing, co-leading projects, and turning complex requirements into solutions people could actually use. That thinking did not change when I switched industries. Only the medium did.</p>
+          <p class="lede">Today, I am a Product Associate at Embed Financial, building embedded insurance ecosystems and national payment wallets across Zambia, Nigeria, the DRC, and Ghana — products for communities that couldn't access them before.</p>
+        </div>
+        <div class="hero-actions">
+          <a href="#work" class="hero-cta-primary">See the work ↓</a>
+          <a href="/resume.html" class="hero-cta-secondary">Resume →</a>
+        </div>
       </div>
-      <div class="card-content">
-        <h3>Where to Brew</h3>
-        <div class="role">A data-driven decision tool, modelling demand, cost, and ROI across five locations</div>
-      </div>
-    </div>
+      <figure class="hero-portrait" aria-hidden="true">
+        <img src="assets/images/portrait.jpg" alt="Ghim Chong Tan">
+      </figure>
+    </section>
 
-    <div class="card">
-      <div class="card-image">
-        [image]
-      </div>
-      <div class="card-content">
-        <h3>Placeholder Title 4</h3>
-        <div class="role">Short subtitle or role</div>
-      </div>
-    </div>
+    <section class="gallery" id="work" aria-labelledby="gallery-label">
+      <h2 id="gallery-label" class="section-label">Selected work</h2>
+      <div class="gallery-grid">
 
-    <div class="card">
-      <div class="card-image">
-        [image]
-      </div>
-      <div class="card-content">
-        <h3>Placeholder Title 5</h3>
-        <div class="role">Short subtitle or role</div>
-      </div>
-    </div>
+        <a href="/Pages/projects/journi.html" class="card">
+          <div class="card-image">
+            <img
+              src="assets/images/projects/journi.jpg"
+              alt="Journi — a social travel companion app"
+              loading="lazy"
+            >
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Journi</h3>
+            <p class="card-desc">A travel companion designed around how people actually remember shared experiences.</p>
+            <div class="card-tags">
+              <span class="tag">Research</span>
+              <span class="tag">Prototype</span>
+            </div>
+          </div>
+        </a>
 
-    <div class="card">
-      <div class="card-image">
-        [image]
-      </div>
-      <div class="card-content">
-        <h3>Placeholder Title 6</h3>
-        <div class="role">Short subtitle or role</div>
-      </div>
-    </div>
+        <a href="/Pages/projects/casehub.html" class="card">
+          <div class="card-image">
+            <img
+              src="assets/images/projects/casehub.jpg"
+              alt="CaseHub — legal case management platform"
+              loading="lazy"
+            >
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">CaseHub</h3>
+            <p class="card-desc">Rethinking case management to surface what matters and reduce legal admin overhead.</p>
+            <div class="card-tags">
+              <span class="tag">Product Strategy</span>
+              <span class="tag">Workflow</span>
+            </div>
+          </div>
+        </a>
 
-    <div class="card">
-      <div class="card-image">
-        [image]
-      </div>
-      <div class="card-content">
-        <h3>Placeholder Title 7</h3>
-        <div class="role">Short subtitle or role</div>
-      </div>
-    </div>
+        <a href="/Pages/projects/brew.html" class="card">
+          <div class="card-image">
+            <img
+              src="assets/images/projects/brew.jpg"
+              alt="Where to Brew — café finder for remote workers"
+              loading="lazy"
+            >
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Where to Brew</h3>
+            <p class="card-desc">A café discovery tool built around what remote workers actually care about.</p>
+            <div class="card-tags">
+              <span class="tag">User Research</span>
+              <span class="tag">Data</span>
+            </div>
+          </div>
+        </a>
 
-    <div class="card">
-      <div class="card-image">
-        [image]
       </div>
-      <div class="card-content">
-        <h3>Placeholder Title 8</h3>
-        <div class="role">Short subtitle or role</div>
-      </div>
-    </div>
-  </div>
-</section>
+      <p class="gallery-note">Case studies in progress.</p>
+    </section>
 
-<script>
-  (function(){
-    const gallery = document.querySelector('.gallery');
-    if (!gallery) return;
-    gallery.addEventListener('wheel', function(e){
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-        e.preventDefault();
-        gallery.scrollLeft += e.deltaY;
+  </main>
+
+  <footer class="site-footer">
+    <p>Ghim Chong Tan · 2026 · <a href="mailto:ghimchong.tan@gmail.com">ghimchong.tan@gmail.com</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var drawer = document.querySelector('.nav-drawer');
+      if (!toggle || !drawer) return;
+
+      function openNav() {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close navigation');
+        drawer.classList.add('is-open');
+        drawer.removeAttribute('aria-hidden');
       }
-    }, {passive:false});
-  })();
-</script>
 
+      function closeNav() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      toggle.addEventListener('click', function () {
+        toggle.getAttribute('aria-expanded') === 'true' ? closeNav() : openNav();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          closeNav();
+          toggle.focus();
+        }
+      });
+
+      drawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeNav);
+      });
+    })();
+  </script>
 
 </body>
-</html>
+</html>                                     

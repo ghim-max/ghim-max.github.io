@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaseHub — Ghim Chong Tan</title>
+  <meta name="description" content="CaseHub — legal case management. Case study by Ghim Chong Tan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" id="site-nav">
+    <a href="/" class="nav-logo">GCT</a>
+    <div class="nav-links">
+      <a href="mailto:ghimchong.tan@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/resume.html" class="nav-cta">Resume</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+      <a href="mailto:ghimchong.tan@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ghim-chong-tan" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/ghim-max" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/resume.html" class="nav-cta-mobile">Resume →</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <a href="/" class="page-back">← Back to work</a>
+    <div class="page-hero">
+      <h1 class="page-title">CaseHub</h1>
+      <p class="page-status">Case study in progress.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Ghim Chong Tan · 2026 · <a href="mailto:ghimchong.tan@gmail.com">ghimchong.tan@gmail.com</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var drawer = document.querySelector('.nav-drawer');
+      if (!toggle || !drawer) return;
+      function openNav() {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close navigation');
+        drawer.classList.add('is-open');
+        drawer.removeAttribute('aria-hidden');
+      }
+      function closeNav() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      toggle.addEventListener('click', function () {
+        toggle.getAttribute('aria-expanded') === 'true' ? closeNav() : openNav();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+          closeNav(); toggle.focus();
+        }
+      });
+      drawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeNav);
+      });
+    })();
+  </script>
+
+</body>
+</html>
